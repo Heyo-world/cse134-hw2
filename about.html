@@ -44,12 +44,21 @@
         </article>
 
 		<section>
-			<h2>Custom element #2</h1>
-			<p id="hello-world"></p>
+		    <h2>Custom element #2</h2>
+		    <!-- The tag itself represents the custom element -->
+		    <hello-world-logger></hello-world-logger>
 		</section>
+
 		<script>
-			document.getElementById("hello-world").innerHTML = "Hello World!";
-		</script> 
+		    class HelloWorldLogger extends HTMLElement {
+		        connectedCallback() {
+		            // Prints "Hello World!" to the console without altering the DOM
+		            console.log("Hello World!");
+		        }
+		    }
+		    customElements.define('hello-world-logger', HelloWorldLogger);
+		</script>
+
 		<noscript>Your browser does not support JavaScript</noscript>
 	</main>
 
